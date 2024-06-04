@@ -139,7 +139,7 @@ if (Object.setPrototypeOf) {
 exports.TemplateError = TemplateError;
 
 function escape(val) {
-  return val.replace(escapeRegex, lookupEscape);
+  return val === undefined ? '' : `#{\`\`\` ${(val + '').replace(/`/g, '`\u200b')}\`\`\`.text}`;
 }
 
 exports.escape = escape;
